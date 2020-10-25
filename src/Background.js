@@ -38,57 +38,63 @@
 (async () => {
 
   messenger.WindowListener.registerDefaultPrefs("defaults/preferences/gContactSync.js");
-  
-  messenger.WindowListener.registerChromeUrl([ 
-    ["content",  "gcontactsync",           "chrome/content/"],
-    ["resource", "gcontactsync",           "chrome/skin/"],
-    ["locale",   "gcontactsync", "en-US",  "chrome/locale/en-US/"],
-    ["locale",   "gcontactsync", "cs",     "chrome/locale/cs/"],
-    ["locale",   "gcontactsync", "de",     "chrome/locale/de/"],
-    ["locale",   "gcontactsync", "es-ES",  "chrome/locale/es-ES/"],
-    ["locale",   "gcontactsync", "it",     "chrome/locale/it/"],
-    ["locale",   "gcontactsync", "nl",     "chrome/locale/nl/"],
-    ["locale",   "gcontactsync", "pt-BR",  "chrome/locale/pt-BR/"],
-    ["locale",   "gcontactsync", "pt-PT",  "chrome/locale/pt-PT/"],
-    ["locale",   "gcontactsync", "sl-SI",  "chrome/locale/sl-SI/"],
-    ["locale",   "gcontactsync", "sv-SE",  "chrome/locale/sv-SE/"],
-    ["locale",   "gcontactsync", "zh-CN",  "chrome/locale/zh-CN/"]
-  );
+
+  messenger.WindowListener.registerChromeUrl([
+    ["content",  "gcontactsync",           "content/"],
+    ["resource", "gcontactsync",           "skin/"],
+    ["locale",   "gcontactsync", "en-US",  "locale/en-US/"],
+    ["locale",   "gcontactsync", "cs",     "locale/cs/"],
+    ["locale",   "gcontactsync", "de",     "locale/de/"],
+    ["locale",   "gcontactsync", "es-ES",  "locale/es-ES/"],
+    ["locale",   "gcontactsync", "it",     "locale/it/"],
+    ["locale",   "gcontactsync", "nl",     "locale/nl/"],
+    ["locale",   "gcontactsync", "pt-BR",  "locale/pt-BR/"],
+    ["locale",   "gcontactsync", "pt-PT",  "locale/pt-PT/"],
+    ["locale",   "gcontactsync", "sl-SI",  "locale/sl-SI/"],
+    ["locale",   "gcontactsync", "sv-SE",  "locale/sv-SE/"],
+    ["locale",   "gcontactsync", "zh-CN",  "locale/zh-CN/"]
+  ]);
 
   messenger.WindowListener.registerOptionsPage("chrome://gcontactsync/content/options.xul");
-  
+
   messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/addressbook/addressbook.xul", 
-    "chrome://gcontactsync/content/windowlistenerjs/WL_AddressBook.js");
+    "chrome://messenger/content/addressbook/addressbook.xul",
+    "chrome://gcontactsync/content/windowlistenerjs/WL_AddressBookOverlay.js");
   messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/messenger.xul", 
-    "chrome://gcontactsync/content/windowlistenerjs/WL_Messenger.js");
-  messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/addressbook/abEditCardDialog.xul", 
-    "chrome://gcontactsync/content/windowlistenerjs/WL_abEditCardDialog.js");
-  messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/addressbook/abNewCardDialog.xul", 
-    "chrome://gcontactsync/content/windowlistenerjs/WL_abNewCardDialog.js");
-  messenger.WindowListener.registerWindow(
-    "chrome://gcontactsync/content/ABOverlay.xul", 
-    "chrome://gcontactsync/content/windowlistenerjs/WL_ABOverlay.js");
-  messenger.WindowListener.registerWindow(
-    "chrome://gcontactsync/content/AccountSetupWizard.xul", 
-    "chrome://gcontactsync/content/windowlistenerjs/WL_AccountSetupWizard.js");
-  messenger.WindowListener.registerWindow(
-    "chrome://gcontactsync/content/MessengerOverlay.xul", 
+    "chrome://messenger/content/messenger.xul",
     "chrome://gcontactsync/content/windowlistenerjs/WL_MessengerOverlay.js");
   messenger.WindowListener.registerWindow(
-    "chrome://gcontactsync/content/NewRefreshToken.xul", 
+    "chrome://messenger/content/addressbook/abEditCardDialog.xul",
+    "chrome://gcontactsync/content/windowlistenerjs/WL_abCardDialogOverlay.js");
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/addressbook/abNewCardDialog.xul",
+    "chrome://gcontactsync/content/windowlistenerjs/WL_abCardDialogOverlay.js");
+
+  /* TODO: WindowListener API: Attempt to register an injector script for non-existent window: chrome://gcontactsync/content/ABOverlay.xul
+  messenger.WindowListener.registerWindow(
+    "chrome://gcontactsync/content/AccountSetupWizard.xul",
+    "chrome://gcontactsync/content/windowlistenerjs/WL_AccountSetupWizard.js");
+  messenger.WindowListener.registerWindow(
+    "chrome://gcontactsync/content/NewRefreshToken.xul",
     "chrome://gcontactsync/content/windowlistenerjs/WL_NewRefreshToken.js");
   messenger.WindowListener.registerWindow(
-    "chrome://global/content/customizeToolbar.xul", 
+    "chrome://global/content/customizeToolbar.xul",
     "chrome://gcontactsync/content/windowlistenerjs/WL_customizeToolbar.js");
+
+  most likely not neccessary:
+  messenger.WindowListener.registerWindow(
+    "chrome://gcontactsync/content/ABOverlay.xul",
+    "chrome://gcontactsync/content/windowlistenerjs/WL_ABOverlay.js");
+  messenger.WindowListener.registerWindow(
+    "chrome://gcontactsync/content/MessengerOverlay.xul",
+    "chrome://gcontactsync/content/windowlistenerjs/WL_MessengerOverlay.js");
+
+  */
 
   /* TODO: WindowListener.registerShutdownScript() needed for e.g. observers, custom autocomplete components and custom XPCOM components
        - Multiple observers found by doing a full text search for observer in the source
-       - Regarding autocomplete components a search for "Components.interfaces.nsIComponentRegistrar" turned up nothing. 
+       - Regarding autocomplete components a search for "Components.interfaces.nsIComponentRegistrar" turned up nothing.
   */
-  
+
   messenger.WindowListener.startListening();
 })()
