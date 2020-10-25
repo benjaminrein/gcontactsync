@@ -27,6 +27,8 @@
     ]
   },
   "icons": {
-    "32": "skin/logo_main.png"
+    "16": "skin/logo_main_16.png",
+    "24": "skin/logo_main_24.png",
+	"32": "skin/logo_main.png"
   }
 }
