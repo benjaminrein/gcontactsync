@@ -70,7 +70,7 @@
     "chrome://messenger/content/addressbook/abNewCardDialog.xul",
     "chrome://gcontactsync/content/windowlistenerjs/WL_abCardDialogOverlay.js");
 
-  /* TODO: WindowListener API: Attempt to register an injector script for non-existent window: chrome://gcontactsync/content/ABOverlay.xul
+  /* TODO: WindowListener API: Attempt to register an injector script for non-existent window: chrome://global/content/customizeToolbar.xul
   messenger.WindowListener.registerWindow(
     "chrome://gcontactsync/content/AccountSetupWizard.xul",
     "chrome://gcontactsync/content/windowlistenerjs/WL_AccountSetupWizard.js");
@@ -80,15 +80,6 @@
   messenger.WindowListener.registerWindow(
     "chrome://global/content/customizeToolbar.xul",
     "chrome://gcontactsync/content/windowlistenerjs/WL_customizeToolbar.js");
-
-  most likely not neccessary:
-  messenger.WindowListener.registerWindow(
-    "chrome://gcontactsync/content/ABOverlay.xul",
-    "chrome://gcontactsync/content/windowlistenerjs/WL_ABOverlay.js");
-  messenger.WindowListener.registerWindow(
-    "chrome://gcontactsync/content/MessengerOverlay.xul",
-    "chrome://gcontactsync/content/windowlistenerjs/WL_MessengerOverlay.js");
-
   */
 
   /* TODO: WindowListener.registerShutdownScript() needed for e.g. observers, custom autocomplete components and custom XPCOM components
