@@ -75,8 +75,6 @@ Services.scriptloader.loadSubScript("chrome://gcontactsync/content/ABOverlay.js"
 
 
 function onLoad(activatedWhileWindowOpen) {
-  WL.injectCSS("resource://gcontactsync/overlay.css");
-
   WL.injectElements(`
     <toolbarbutton id="button-sync"
                  label="&sync.label;"
@@ -190,22 +188,6 @@ function onLoad(activatedWhileWindowOpen) {
                class="menuitem-iconic icon-mail16 menu-iconic"
                oncommand="gContactSync.openURL('extensions.gContactSync.googleContactsURL');"/>
        <menuseparator/>
-       <menu id="gContactSyncImport"
-             label="&Import.label;"
-             accesskey="&Import.accesskey;">
-         <menupopup>
-           <menuitem label="&Facebook.label;"
-                     oncommand="gContactSync.Import.step1('facebook');"/>
-           <!-- Not supported quite yet -->
-           <!--<menuitem label="&LinkedIn.label;"
-                     oncommand="gContactSync.Import.step1('linkedin');"/>-->
-           <menuitem label="&Twitter.label;"
-                     oncommand="gContactSync.Import.step1('twitter');"/>
-         </menupopup>
-       </menu>
-      <menuitem id="finishImport"
-                label="&FinishImport.label;"
-                oncommand="gContactSync.Import.step3();"/>
     </menupopup>
     </menu>`,
   ["chrome://gContactSync/locale/overlay.dtd"]);
@@ -227,14 +209,24 @@ function onLoad(activatedWhileWindowOpen) {
       <toolbarbutton id="button-sync"/>
     </toolbarpalette>`,
   ["chrome://gContactSync/locale/overlay.dtd"]);
+
+  WL.injectCSS("resource://gcontactsync/overlay.css");
+
+  //Initializes the ABOverlay class
+  window.gContactSync.ABOverlay.initialize();
+
+  //Initializes the Overlay (used twice)
+  window.gContactSync.Overlay.initialize();
 }
 
 function onUnload(deactivatedWhileWindowOpen) {
+  //Unregisters the Overlay (used twice)
+  window.gContactSync.Overlay.unload();
+
   // Cleaning up the window UI is only needed when the
   // add-on is being deactivated/removed while the window
   // is still open. It can be skipped otherwise.
   if (!deactivatedWhileWindowOpen) {
     return
   }
-  //TODO
 }

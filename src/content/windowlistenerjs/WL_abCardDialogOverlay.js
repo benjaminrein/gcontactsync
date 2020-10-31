@@ -119,6 +119,11 @@ function onLoad(activatedWhileWindowOpen) {
   </tabpanels>`,
   ["chrome://gContactSync/locale/overlay.dtd","chrome://messenger/locale/addressbook/abCardOverlay.dtd"]);
 
+  window.gContactSync.CardDialogOverlay.init();
+  
+  //TODO Cleanup if not needed
+  //init eventually needed here as well
+  //window.gContactSync.ContactConverter.init();
 }
 
 function onUnload(deactivatedWhileWindowOpen) {
