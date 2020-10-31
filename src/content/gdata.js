@@ -37,14 +37,6 @@
 /** Containing object for gContactSync */
 var gContactSync = gContactSync || {};
 
-window.addEventListener("load",
-  /** Initializes the gdata class when the window has finished loading */
-  function gCS_gdataLoadListener() {
-    window.removeEventListener("load", gCS_gdataLoadListener, false);
-    gContactSync.gdata.contacts.init();
-  },
-false);
-
 /**
  * Stores information on using the Google Data Api protocol, specifically the
  * contacts portion of the protocol.

@@ -37,14 +37,6 @@
 /** Containing object for gContactSync */
 var gContactSync = gContactSync || {};
 
-window.addEventListener("load",
-  /** Initializes the FileIO class when the window has finished loading */
-  function gCS_FileIOLoadListener() {
-    window.removeEventListener("load", gCS_FileIOLoadListener, false);
-    gContactSync.FileIO.init();
-  },
-false);
-
 /**
  * A class for reading, writing, and appending to files with an nsIFile for
  * storing data, authentication info, and logs.

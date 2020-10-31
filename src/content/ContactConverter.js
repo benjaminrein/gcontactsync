@@ -37,15 +37,6 @@
 /** Containing object for gContactSync */
 var gContactSync = gContactSync || {};
 
-window.addEventListener("load",
-  /** Initializes the ContactConverter class when the window has finished loading */
-  function gCS_ContactConverterLoadListener() {
-    window.removeEventListener("load", gCS_ContactConverterLoadListener, false);
-    gContactSync.ContactConverter.init();
-  },
-false);
-
-
 /**
  * Converts contacts between Thunderbird's format (a 'card') and the Atom/XML
  * representation of a contact.  Must be initialized before the first use by

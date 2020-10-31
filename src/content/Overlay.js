@@ -37,14 +37,6 @@
 /** Containing object for gContactSync */
 var gContactSync = gContactSync || {};
 
-window.addEventListener("load",
-  /** Initializes the FileIO class when the window has finished loading */
-  function gCS_overlayLoadListener() {
-    window.removeEventListener("load", gCS_overlayLoadListener, false);
-    gContactSync.Overlay.initialize();
-  },
-false);
-
 /**
  * Checks if the authentication token is present and valid.  If so, it starts
  * everything up and synchronizes the contacts.  Otherwise it shows the
@@ -68,12 +60,6 @@ gContactSync.Overlay = {
     this.mLastVersionRelease = gContactSync.Preferences.mSyncPrefs.lastVersionRelease.value;
     this.mLastVersionSuffix  = gContactSync.Preferences.mSyncPrefs.lastVersionSuffix.value;
     gContactSync.AbListener.add(); // add the address book listener
-
-    // call the unload function when the address book window is shut
-    window.addEventListener("unload", function unloadListener(e) {
-      window.removeEventListener("unload", unloadListener, false);
-      gContactSync.Overlay.unload();
-    }, false);
   },
   /**
    * Called when the overlay is unloaded and removes the address book listener.

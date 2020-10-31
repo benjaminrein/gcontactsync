@@ -37,15 +37,6 @@
 /** Containing object for gContactSync */
 var gContactSync = gContactSync || {};
 
-window.addEventListener("load",
-  /** Initializes the MessengerOverlay class when the window has finished loading */
-  function gCS_mainOverlayLoadListener() {
-    window.removeEventListener("load", gCS_mainOverlayLoadListener, false);
-    // introduce a slight delay before initializing to let FileIO load in TB 2
-    setTimeout(gContactSync.MessengerOverlay.initialize, 100);
-  },
-false);
-
 /**
  * The main overlay removes old log files and logs basic information about
  * the version of gContactSync and Thunderbird.

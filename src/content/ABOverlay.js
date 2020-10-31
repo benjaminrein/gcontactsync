@@ -37,14 +37,6 @@
 /** Containing object for gContactSync */
 var gContactSync = gContactSync || {};
 
-window.addEventListener("load",
-  /** Initializes the ABOverlay class when the window has finished loading */
-  function gCS_abOverlayLoadListener() {
-    window.removeEventListener("load", gCS_abOverlayLoadListener, false);
-    gContactSync.ABOverlay.initialize();
-  },
-false);
-
 /**
  * The Address Book window overlay overrides certain functions to add
  * gContactSync fields to the address book.

@@ -37,27 +37,6 @@
 /** Containing object for gContactSync */
 var gContactSync = gContactSync || {};
 
-window.addEventListener("load",
-  /**
-   * Registers the pref observer and loads the preferences
-   */
-  function gCS_PreferencesLoadListener() {
-    window.removeEventListener("load", gCS_PreferencesLoadListener, false);
-    gContactSync.Preferences.register();
-    gContactSync.Preferences.getSyncPrefs();
-  },
-false);
-
-window.addEventListener("unload",
-  /**
-   * Unregisters the pref observer.
-   */
-  function gCS_PreferencesUnloadListener() {
-    window.removeEventListener("unload", gCS_PreferencesUnloadListener, false);
-    gContactSync.Preferences.unregister();
-  },
-false);
-
 /**
  * Stores information on Preferences related to gContactSync.
  * @class

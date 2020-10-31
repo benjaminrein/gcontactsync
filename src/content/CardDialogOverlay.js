@@ -37,13 +37,6 @@
 /** Containing object for gContactSync */
 var gContactSync = gContactSync || {};
 
-window.addEventListener("load",
-  /** Initializes the CardDialogOverlay when the window has finished loading. */
-  function gCS_CardDialogOverlayLoadListener() {
-    window.removeEventListener("load", gCS_CardDialogOverlayLoadListener, false);
-    gContactSync.CardDialogOverlay.init();
-  },
-false);
 /**
  * Attributes added to TB by gContactSync AND present in the card dialog overlay
  */
